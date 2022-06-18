@@ -32,7 +32,7 @@ export default {
   components: { Aside, Header },
   data() {
     return {
-      isCollapse: false,
+      isCollapse: true,
     };
   },
   methods: {
@@ -59,8 +59,7 @@ export default {
   .el-header {
     background-color: #fff;
   }
-  .el-main {
-  } 
+  
   .collapse-side-menu {
     width: 45px !important;
     // transition: width 0.8s;

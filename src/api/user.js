@@ -22,4 +22,22 @@ export function getUserProfile(){
   })
 }
 
+// 更新用户头像
+export function updateUserPhoto(data) {
+  return request({
+    method: 'PATCH',
+    url: '/mp/v1_0/user/photo',
+    data
+  })
+}
 
+
+// 更新用户的基本信息
+// 需要 name, intro, email
+export function updateUserProfile(data){
+  return request({
+    method: 'PATCH',
+    url: '/mp/v1_0/user/profile',
+    data
+  })
+}

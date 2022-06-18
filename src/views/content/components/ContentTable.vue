@@ -31,6 +31,7 @@
         </template>
       </el-table-column>
       <el-table-column prop="title" label="标题"> </el-table-column>
+      
       <el-table-column prop="status" label="状态">
         <!-- 
 
@@ -42,13 +43,14 @@
           <el-tag>{{ tag[scope.row.status] }}</el-tag>
         </template>
       </el-table-column>
+
       <el-table-column prop="pubdate" label="发布时间"> </el-table-column>
       <el-table-column label="操作">
         <template slot-scope="scope">
           <el-button
             size="mini"
             circle
-            @click="handleEdit(scope.$index, scope.row)"
+            @click="handleEdit(scope.row.id)"
             >编辑</el-button
           >
           <el-button
@@ -120,6 +122,7 @@ export default {
         status: this.status, // 展示哪一种类型的数据 不传->全部  0->草稿 1->待审核 2->审核通过 3->审核失败 4->已删除
         channel_id: this.channel_id,
       }).then((res) => {
+        console.log(res);
         this.articles = res.data.data.results;
         this.totalCount = res.data.data.total_count;
         this.loading = false
@@ -148,6 +151,15 @@ export default {
           });          
         });
       
+    },
+    handleEdit(id){
+      this.$router.push({
+        name: 'essay',
+        params: {
+          tag: 1,
+          id
+        }
+      })
     }
   },
 };

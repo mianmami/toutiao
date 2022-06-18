@@ -5,6 +5,13 @@ import router from './router'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import store from './store'
+import { ElementTiptapPlugin } from 'element-tiptap';
+import 'element-ui/lib/theme-chalk/index.css';
+import 'element-tiptap/lib/index.css';
+import BaiduMap from 'vue-baidu-map'
+// use ElementUI's plugin
+Vue.use(ElementUI);
+
 
 // 加载全局样式文件
 import "./assets/css/global.less"
@@ -14,7 +21,15 @@ Vue.config.productionTip = false
 // 全局注册ElementUI组件
 Vue.use(ElementUI);
 
+// 全局注册ElementUI-tiptap组件
+Vue.use(ElementTiptapPlugin);
 
+
+
+
+Vue.use(BaiduMap, {
+  ak: '8k2cFTWLm78FlK53ff5tv30vVotqZhGI'
+})
 
 new Vue({
   router,
@@ -47,4 +62,7 @@ el-form可以设置label-width el-form-item也可以设置label-width
       const str = '{"id": 1253585764669959168}'
       console.log(JSONbig.parse(str).id.toString());
 
+element有个自己的默认事件，如果不传入参数，可能会报错
+
+如果修改了配置文件但是没有生效，可以删除node_modules下的.cache文件，然后再试试看
 */
